@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <title>Rishabh Kumar | Frontend & Full Stack Developer</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
 
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
@@ -67,7 +68,7 @@
         list-style: none;
       }
       .nav-links a {
-        color: rgba(226, 232, 240, 0.5);
+        color: rgba(226, 232, 240, 0.9);
         text-decoration: none;
         font-size: 13px;
         font-weight: 500;
@@ -575,7 +576,7 @@
       .sg-label {
         font-size: 11px;
         letter-spacing: 2px;
-        color: rgba(226, 232, 240, 0.35);
+        color: rgba(226, 232, 240, 0.5);
         text-transform: uppercase;
         margin-bottom: 0.75rem;
         font-family: "JetBrains Mono", monospace;
@@ -612,7 +613,7 @@
       }
       .proj-card {
         background: var(--card);
-        border: 1px solid var(--border);
+        border: 1px solid rgba(96, 218, 242, 0.4);
         border-radius: 16px;
         overflow: hidden;
         transition: all 0.3s;
@@ -680,7 +681,7 @@
       }
       .proj-link {
         font-size: 11px;
-        color: rgba(226, 232, 240, 0.4);
+        color: #fff;
         text-decoration: none;
         border: 1px solid var(--border);
         padding: 5px 14px;
@@ -835,7 +836,7 @@
       .soc-btn {
         background: var(--card);
         border: 1px solid var(--border);
-        color: rgba(226, 232, 240, 0.5);
+        color: #fff;
         border-radius: 8px;
         padding: 8px 16px;
         font-size: 12px;
@@ -933,6 +934,50 @@
         }
         .stats-row {
           grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      /* Modal */
+      .modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,.7);
+        backdrop-filter: blur(10px);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+      }
+
+      .modal-overlay.active {
+        display: flex;
+      }
+
+      .modal-box {
+        width: 90%;
+        max-width: 450px;
+        padding: 30px;
+        border-radius: 20px;
+        text-align: center;
+        background: #111827;
+        border: 1px solid rgba(255,255,255,.1);
+        color: white;
+        animation: modalPop .3s ease;
+      }
+
+      .modal-icon {
+        font-size: 50px;
+        margin-bottom: 25px;
+      }
+
+      @keyframes modalPop {
+        from {
+          transform: scale(.8);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
         }
       }
     </style>
@@ -1215,8 +1260,8 @@
               ><span class="p-tag">SEO</span>
             </div>
             <div class="proj-footer">
-              <a class="proj-link" href="https://plusxelectric.com/" target="_blank">↗ Live</a
-              ><a class="proj-link" href="#">⌥ Code</a>
+              <a class="proj-link" href="https://plusxelectric.com/" target="_blank">↗ Live</a>
+              <!-- <a class="proj-link" href="#">⌥ Code</a> -->
             </div>
           </div>
           <div class="proj-card reveal" style="transition-delay: 0.1s">
@@ -1417,18 +1462,8 @@
               </div>
             </div>
             <div class="socials">
-              <a
-                class="soc-btn"
-                href="https://github.com/Rishabhkr1802"
-                target="_blank"
-                >GitHub</a
-              >
-              <a
-                class="soc-btn"
-                href="https://www.linkedin.com/in/rishabh1802/"
-                target="_blank"
-                >LinkedIn</a
-              >
+              <a class="soc-btn" href="https://github.com/Rishabhkr1802" target="_blank" >GitHub</a>
+              <a class="soc-btn" href="https://www.linkedin.com/in/rishabh1802/" target="_blank" >LinkedIn</a>
             </div>
             <div class="avail-bar">
               <div class="avail-title">✦ Open to work</div>
@@ -1438,9 +1473,10 @@
               </div>
             </div>
           </div>
-          <div class="c-form reveal-right">
+          <!-- <div class="c-form reveal-right">
             <input class="f-in" type="text" placeholder="Your Name" />
             <input class="f-in" type="email" placeholder="Your Email" />
+            <input class="f-in" type="contact" placeholder="Contact Number" />
             <input class="f-in" type="text" placeholder="Subject / Project Type" />
             <textarea
               class="f-in"
@@ -1449,7 +1485,31 @@
             <button class="btn-g" style="align-self: flex-start">
               Send Message →
             </button>
-          </div>
+          </div> -->
+          <form id="hireMeForm" class="c-form reveal-right">
+            <input class="f-in" type="text" name="name" placeholder="Your Name" required />
+            <input class="f-in" type="email" name="email" placeholder="Your Email" required />
+            <input class="f-in" type="tel" name="phone" placeholder="Contact Number" required />
+            <input class="f-in" type="text" name="subject" placeholder="Subject / Project Type" required />
+
+            <textarea class="f-in" name="message" placeholder="Tell me about your project..." rows="6" required></textarea>
+
+            <button type="submit" class="btn-g" style="align-self:flex-start">
+              Send Message →
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div id="messageModal" class="modal-overlay">
+        <div class="modal-box">
+          <div id="modalIcon" class="modal-icon">✅</div>
+          <h3 id="modalTitle">Success</h3>
+          <p id="modalText">Your message has been sent successfully.</p>
+
+          <button id="closeModal" class="btn-g">
+            Close
+          </button>
         </div>
       </div>
 
@@ -1465,6 +1525,86 @@
         </button>
       </footer>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+      emailjs.init("aWmRoK3Y6tQR-_2KX");
+    </script>
+
+    <script>
+
+      document.addEventListener("DOMContentLoaded", function () {
+
+        emailjs.init("aWmRoK3Y6tQR-_2KX");
+
+        const form = document.getElementById("hireMeForm");
+
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const button = form.querySelector("button");
+
+          button.disabled = true;
+          button.innerHTML = "Sending...";
+
+          emailjs.sendForm(
+            "service_oyp0omm",
+            "template_yajx4zl",
+            form
+          )
+          .then(function () {
+
+            showModal(
+              "success",
+              "Message Sent!",
+              "Thank you for contacting me. I will get back to you soon."
+            );
+
+            form.reset();
+
+            button.disabled = false;
+            button.innerHTML = "Send Message →";
+
+          })
+          .catch(function (error) {
+
+            console.error("EmailJS Error:", error);
+
+            showModal(
+              "error",
+              "Submission Failed",
+              "Something went wrong while sending your message. Please try again."
+            );
+
+            button.disabled = false;
+            button.innerHTML = "Send Message →";
+
+          });
+        });
+
+      });
+
+      function showModal(type, title, message) {
+        const modal = document.getElementById("messageModal");
+
+        document.getElementById("modalIcon").textContent =
+          type === "success" ? "✔️" : "❌";
+
+        document.getElementById("modalTitle").textContent = title;
+
+        document.getElementById("modalText").textContent = message;
+
+        modal.classList.add("active");
+      }
+
+      document
+        .getElementById("closeModal")
+        .addEventListener("click", function () {
+          document
+            .getElementById("messageModal")
+            .classList.remove("active");
+        });
+      </script>
 
     <script>
       (function () {
