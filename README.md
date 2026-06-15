@@ -34,19 +34,19 @@ I'm a Full Stack Developer with experience building scalable web applications us
 
 ### Portfolio
 
-https://your-portfolio-url.com
+https://rishabh-mu.vercel.app/
 
 ### GitHub
 
-https://github.com/Rishabhkr1802/
+https://github.com/Rishabhkr1802
 
 ### LinkedIn
 
-https://linkedin.com/in/your-linkedin-profile
+https://www.linkedin.com/in/rishabh1802
 
 ### Resume
 
-Add your resume link here
+[Add your resume link here](https://drive.google.com/file/d/18VNOtNQI-lXBa87LWoYbipVrQQPLkhJr/view?usp=sharing)
 
 
 ## Contact
